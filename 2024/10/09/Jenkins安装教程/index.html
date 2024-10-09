@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jenkins安装教程 | 野生博主不在家</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Jenkins简介Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 Jenkins安装Docker 搭建 Jenkins 容器 123456789#查询镜像docker search jenkins#下载镜像docker pull jenkins&#x2F;jenkins#查看镜像docker imag">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins安装教程">
+<meta property="og:url" content="https://pengzzhao.github.io/2024/10/09/Jenkins%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="野生博主不在家">
+<meta property="og:description" content="Jenkins简介Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 Jenkins安装Docker 搭建 Jenkins 容器 123456789#查询镜像docker search jenkins#下载镜像docker pull jenkins&#x2F;jenkins#查看镜像docker imag">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-09T09:20:46.501Z">
+<meta property="article:author" content="Evelia">
+<meta property="article:tag" content="docker python jenkins">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">野生博主不在家</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="pengzzhao.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-Jenkins安装教程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/10/09/Jenkins%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="article-date">
+  <time datetime="2024-10-08T16:00:00.000Z" itemprop="datePublished">2024-10-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Jenkins安装教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Jenkins简介"><a href="#Jenkins简介" class="headerlink" title="Jenkins简介"></a>Jenkins简介</h3><p>Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。</p>
+<h3 id="Jenkins安装"><a href="#Jenkins安装" class="headerlink" title="Jenkins安装"></a>Jenkins安装</h3><p>Docker 搭建 Jenkins 容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查询镜像</span></span><br><span class="line">docker search jenkins</span><br><span class="line"></span><br><span class="line"><span class="comment">#下载镜像</span></span><br><span class="line">docker pull jenkins/jenkins</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看镜像</span></span><br><span class="line">docker images</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="启动Jenkins容器"><a href="#启动Jenkins容器" class="headerlink" title="启动Jenkins容器"></a>启动Jenkins容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建文件夹</span></span><br><span class="line"><span class="built_in">mkdir</span> -p /home/jenkins_home</span><br><span class="line"><span class="comment">#权限</span></span><br><span class="line"><span class="built_in">chmod</span> 777 /home/jenkins_home</span><br><span class="line"></span><br><span class="line"><span class="comment">#启动Jenkins容器</span></span><br><span class="line">docker run -d -uroot -p 9095:8080 -p 50000:50000 --name jenkins -v /home/jenkins_home:/var/jenkins_home -v /etc/localtime:/etc/localtime jenkins/jenkins</span><br><span class="line"></span><br><span class="line"><span class="comment">#日志查看 有初始化密码</span></span><br><span class="line">docker logs jenkins</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>浏览器输入http:&#x2F;&#x2F;服务器IP:端口Port 即可访问jenkins管理页面</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://pengzzhao.github.io/2024/10/09/Jenkins%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" data-id="cm21jfhzd00003ed8gcgm52kl" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/10/09/Harbor%E4%BB%93%E5%BA%93%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Harbor仓库安装教程
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/10/09/Docker%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Docker安装教程</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/09/Harbor%E4%BB%93%E5%BA%93%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Harbor仓库安装教程</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/09/Jenkins%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Jenkins安装教程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 Evelia<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</div>
+</body>
+</html>

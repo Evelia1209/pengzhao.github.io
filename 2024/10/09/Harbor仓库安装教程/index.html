@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Harbor仓库安装教程 | 野生博主不在家</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Harbor简介Harbor是一个开源的Docker镜像仓库管理工具，可以通过它快速的建立起自己的私有仓库。 配置文件harbor.yml，只会在第一次启动Harbor时生效，之后对这些参数的更新harbor.yml将被忽略 Harbor部署Harbor的压缩包下载地址 harbor-v2.11.0 12345#下载安装包wget https:&#x2F;&#x2F;github.com&#x2F;goharbor&#x2F;harbo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Harbor仓库安装教程">
+<meta property="og:url" content="https://pengzzhao.github.io/2024/10/09/Harbor%E4%BB%93%E5%BA%93%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="野生博主不在家">
+<meta property="og:description" content="Harbor简介Harbor是一个开源的Docker镜像仓库管理工具，可以通过它快速的建立起自己的私有仓库。 配置文件harbor.yml，只会在第一次启动Harbor时生效，之后对这些参数的更新harbor.yml将被忽略 Harbor部署Harbor的压缩包下载地址 harbor-v2.11.0 12345#下载安装包wget https:&#x2F;&#x2F;github.com&#x2F;goharbor&#x2F;harbo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-09T08:38:13.732Z">
+<meta property="article:author" content="Evelia">
+<meta property="article:tag" content="docker python jenkins">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">野生博主不在家</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="pengzzhao.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-Harbor仓库安装教程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/10/09/Harbor%E4%BB%93%E5%BA%93%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="article-date">
+  <time datetime="2024-10-08T16:00:00.000Z" itemprop="datePublished">2024-10-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Harbor仓库安装教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Harbor简介"><a href="#Harbor简介" class="headerlink" title="Harbor简介"></a>Harbor简介</h3><p>Harbor是一个开源的Docker镜像仓库管理工具，可以通过它快速的建立起自己的私有仓库。</p>
+<p><strong>配置文件harbor.yml，只会在第一次启动Harbor时生效，之后对这些参数的更新harbor.yml将被忽略</strong></p>
+<h3 id="Harbor部署"><a href="#Harbor部署" class="headerlink" title="Harbor部署"></a>Harbor部署</h3><p>Harbor的压缩包下载地址 <a target="_blank" rel="noopener" href="https://github.com/goharbor/harbor/releases/download/v2.11.0/harbor-offline-installer-v2.11.0.tgz">harbor-v2.11.0</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载安装包</span></span><br><span class="line">wget https://github.com/goharbor/harbor/releases/download/v2.11.0/harbor-offline-installer-v2.11.0.tgz</span><br><span class="line"><span class="comment">#解压缩到指定位置</span></span><br><span class="line">tar zxvf harbor-offline-installer-v2.11.0.tgz -C /usr/local/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>修改harbor安装的配置文件</p>
+<p><strong>使用http请注释掉https相关配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#编辑配置文件</span></span><br><span class="line">vim /usr/local/harbor/harbor.yml</span><br><span class="line"><span class="comment">#修改hostname设置服务器的IP或域名</span></span><br><span class="line">hostname = 192.168.1.100</span><br><span class="line"><span class="comment">#配置管理员的初始密码</span></span><br><span class="line"><span class="comment">#默认的用户名/密码是 admin/Harbor12345</span></span><br><span class="line">harbor_admin_password = Harbor12345</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="启动-Harbor"><a href="#启动-Harbor" class="headerlink" title="启动 Harbor"></a>启动 Harbor</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/harbor/</span><br><span class="line"><span class="comment">#执行./prepare 命令生成相关配置文件</span></span><br><span class="line">./prepare</span><br><span class="line"><span class="comment">#执行./install.sh 命令,创建相关容器，启动harbor</span></span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+<p>查看 Harbor 容器状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps </span><br><span class="line"><span class="comment">#harbor相关容器全是up状态说明启动成功</span></span><br></pre></td></tr></table></figure>
+<p>浏览器访问：<a target="_blank" rel="noopener" href="http://192.168.1.100/">http://192.168.1.100</a> 登录 Harbor WEB UI 界面，默认的管理员用户名和密码是 admin&#x2F;Harbor12345</p>
+<h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><p>输入项目名称 common 确认后创建成功</p>
+<h3 id="登录-Harbor"><a href="#登录-Harbor" class="headerlink" title="登录 Harbor"></a>登录 Harbor</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#其他docker访问harbor仓库 首先使用有效账号登录到harbor仓库</span></span><br><span class="line">docker login [-u admin -p Harbor12345] http://192.168.1.100:80</span><br><span class="line"></span><br><span class="line"><span class="comment">#http无法访问仓库时，docker配置文件添加如下配置</span></span><br><span class="line"><span class="built_in">cat</span> /etc/docker/daemon.json </span><br><span class="line"> </span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;insecure-registries&quot;</span>: [<span class="string">&quot;http://192.168.1.100:80&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="推送镜像到Harbor仓库"><a href="#推送镜像到Harbor仓库" class="headerlink" title="推送镜像到Harbor仓库"></a>推送镜像到Harbor仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#本地镜像打Tag</span></span><br><span class="line">docker tag rabbitmq:management 192.168.1.100:80/common/rabbitmq:management</span><br><span class="line"><span class="comment">#推送到Harbor仓库</span></span><br><span class="line">docker push 192.168.1.100:80/common/rabbitmq:management</span><br><span class="line"></span><br><span class="line"><span class="comment">#从Harbor仓库拉去镜像</span></span><br><span class="line">docker pull 192.168.1.100:80/common/rabbitmq:management</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://pengzzhao.github.io/2024/10/09/Harbor%E4%BB%93%E5%BA%93%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" data-id="cm21iw0sb0000vud82splcho9" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/10/09/Docker%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Docker安装教程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/10/09/Jenkins%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Jenkins安装教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/10/09/Docker%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Docker安装教程</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/09/Harbor%E4%BB%93%E5%BA%93%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Harbor仓库安装教程</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/09/Jenkins%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Jenkins安装教程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 Evelia<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</div>
+</body>
+</html>
