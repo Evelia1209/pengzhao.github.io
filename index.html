@@ -67,6 +67,73 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Podman安装教程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/10/11/Podman%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="article-date">
+  <time datetime="2024-10-11T05:15:04.000Z" itemprop="datePublished">2024-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/10/11/Podman%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Podman安装教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Podman简介"><a href="#Podman简介" class="headerlink" title="Podman简介"></a>Podman简介</h3><p>Podman（Pod Manager）是一个开源的容器管理工具，它提供了一个与 Docker 类似的方式来管理容器。Podman 由 Red Hat 主导开发，是完全免费和开源的。它的设计旨在能够直接运行容器和 Pod（一组容器的集合），并且它与 Kubernetes 的容器生命周期管理兼容。<br>Podman 的一个主要特点是它不依赖于守护进程（daemon），与 Docker 不同，这使得 Podman 在系统中运行时更加安全和轻量。它使用标准的容器镜像，可以从 Docker 容器镜像库或任何其他兼容 OCI（Open Container Initiative）的容器镜像库拉取镜像。</p>
+<h3 id="Podman-与-Docker-的主要区别"><a href="#Podman-与-Docker-的主要区别" class="headerlink" title="Podman 与 Docker 的主要区别"></a>Podman 与 Docker 的主要区别</h3><ol>
+<li><p><strong>守护进程</strong>:</p>
+<p> Docker 使用单个守护进程（dockerd）来管理容器。所有的容器操作都必须通过这个守护进程进行，这可能会引入单点故障和安全风险。</p>
+<p> Podman 不使用守护进程。它通过直接调用容器运行时接口（如 runC 或其他兼容 OCI 的运行时）来管理容器，从而提高了安全性，并减少了系统资源的占用。</p>
+</li>
+<li><p><strong>安全性</strong>:</p>
+<p> Docker 在执行容器时默认以 root 用户运行，这可能导致安全隐患。</p>
+<p> Podman 默认支持以非 root 用户身份运行容器，这提供了更好的安全保障。</p>
+</li>
+<li><p><strong>体系结构和功能</strong>:</p>
+<p> Docker 配置和操作相对复杂，集成了多种功能，如镜像构建、容器运行、网络管理等。</p>
+<p> Podman 提供了更加模块化的设计，可以单独使用或与其他工具（如 Buildah 和 Skopeo）集成使用，这些工具分别负责构建镜像和进行镜像仓库操作。</p>
+</li>
+<li><p><strong>兼容性</strong>:</p>
+<p> Podman 与 Docker 命令行界面（CLI）高度兼容。大多数情况下，用户可以直接将 docker 命令替换为 podman 命令，而不需要更改其他参数或脚本。</p>
+</li>
+<li><p><strong>社区和生态系统</strong>:</p>
+<p> Docker 拥有一个庞大且成熟的生态系统和社区，提供大量的资源和插件。</p>
+<p> Podman 虽然是较新的技术，但正在快速发展，得到了 Red Hat 和开源社区的强力支持。</p>
+</li>
+</ol>
+<p>总的来说，Podman 提供了一个更安全、更灵活的容器管理解决方案，特别是对于希望避免使用守护进程或以非 root 权限运行容器的用户。</p>
+<h3 id="Podman安装"><a href="#Podman安装" class="headerlink" title="Podman安装"></a>Podman安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#卸载系统之前可能安装的Podman</span></span><br><span class="line"><span class="built_in">sudo</span> dnf -y install dnf-plugins-core</span><br><span class="line"><span class="built_in">sudo</span> dnf -y copr <span class="built_in">enable</span> rhcontainerbot/container-selinux</span><br><span class="line"><span class="built_in">sudo</span> dnf -y module <span class="built_in">disable</span> container-tools:rhel8</span><br><span class="line"><span class="built_in">sudo</span> dnf -y module <span class="built_in">enable</span> container-tools:3.0</span><br><span class="line"><span class="built_in">sudo</span> dnf -y install podman</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看podman版本</span></span><br><span class="line">podman --version</span><br><span class="line"></span><br><span class="line"><span class="comment">#编辑配置文件</span></span><br><span class="line">vim /etc/containers/registries.conf</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Podman-常用命令"><a href="#Podman-常用命令" class="headerlink" title="Podman 常用命令"></a>Podman 常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查找镜像</span></span><br><span class="line">podman search xxx</span><br><span class="line"></span><br><span class="line"><span class="comment">#拉取镜像</span></span><br><span class="line">podman pull pull redis</span><br><span class="line"><span class="comment">#查看镜像</span></span><br><span class="line">podman images </span><br><span class="line"><span class="comment">#查看镜像详细信息</span></span><br><span class="line">podman inspect redis</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#登录仓库需要用户名密码</span></span><br><span class="line">podman login  uhub.service.ucloud.cn</span><br><span class="line"><span class="comment">#登出仓库</span></span><br><span class="line">podman <span class="built_in">logout</span>  uhub.service.ucloud.cn</span><br><span class="line"><span class="comment">#删除镜像</span></span><br><span class="line">podman rmi redis</span><br><span class="line"></span><br><span class="line"><span class="comment">#启动容器</span></span><br><span class="line">podman start  xxx</span><br><span class="line"><span class="comment">#停止容器</span></span><br><span class="line">podman stop   xxx</span><br><span class="line"><span class="comment">#重启容器</span></span><br><span class="line">podman restart xxx</span><br><span class="line"><span class="comment">#删除容器</span></span><br><span class="line">podman <span class="built_in">rm</span>  xxx</span><br><span class="line"></span><br><span class="line"><span class="comment">#查找正在运行中的容器</span></span><br><span class="line">podman ps</span><br><span class="line"></span><br><span class="line"><span class="comment">#进入容器</span></span><br><span class="line">podman <span class="built_in">exec</span> -it redis /bin/bash</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://pengzzhao.github.io/2024/10/11/Podman%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" data-id="cm25qvjy40000m2d8032jch7h" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Docker安装教程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2024/10/09/Docker%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="article-date">
@@ -231,7 +298,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -241,6 +308,10 @@
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/10/11/Podman%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Podman安装教程</a>
+          </li>
         
           <li>
             <a href="/2024/10/09/Docker%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Docker安装教程</a>
